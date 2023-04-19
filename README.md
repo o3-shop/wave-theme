@@ -2,7 +2,7 @@
 
 ## General Information
 
-*Wave* is a responsive theme for all O3-Shop editions. Theme is built on the top of [Flow theme](https://github.com/o3-shop/flow_theme).
+*Wave* is a responsive theme for all O3-Shop editions. Theme is built on the top of [Flow theme](https://gitlab.o3-shop.com/o3/flow-theme).
 
 ## Branch Compatibility
 
@@ -43,7 +43,7 @@ All *Wave* theme related CSS/Javascript files can be found in theme's ``build`` 
 To get the development files you need to clone the repository
 
 	cd DOCUMENT_ROOT/Application/views/
-	git clone -b BRANCH_NAME https://github.com/o3-shop/wave-theme.git wave
+	git clone -b BRANCH_NAME https://gitlab.o3-shop.com/o3/wave-theme.git wave
 	
 1. To use ``grunt``, ``npm`` is required. Check ``nodejs`` website for installation
 instructions (https://nodejs.org/en/download/package-manager/). Example of
@@ -80,16 +80,9 @@ If you are interested in contributing of some changes, Please read [CONTRIBUTING
 
 ## Compatibility with modules
 
-1. Visual CMS
-- In the module settings you need to deacticvate the inclusion of Bootstrap and JQuery
-- Compatible with visual CMS 3.3.0 (https://github.com/o3-shop/visual_cms_module/commit/75bc2a8f05cd8f2b76b6383eb6213c994494a6ee)
-
-2. PayPal module
+1. PayPal module
 - The PayPal module contains in a tpl file a check for the theme id ```[{if $oViewConf->getActiveTheme()=='flow'}]``` which should be adjusted to wave
-
-3. B2B Edition
-- The B2B Edition contains in tpl files a check for the theme id ```[{if $oViewConf->getActiveTheme()=='flow'}]``` which should be adjusted to wave
 
 ## Issues
 
-Please forward all issues to https://bugs.o3-shop.com/ for the project **Wave Theme**.
+Please forward all issues to https://issues.o3-shop.com/ for the project **Wave Theme**.

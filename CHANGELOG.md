@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## [v1.0.1] - 2023-03-27
+
+### Fixed
+- outdated URLs in config settings
+
 ## [v1.0.0] - 2023-03-05
 
 ### Changed
@@ -230,7 +235,8 @@ in:
 
 ## 1.0.0 -  2019-01-21
 
-[v1.0.0]: https://github.com/o3-shop/wave-theme/releases/tag/v1.0.0
+[v1.0.1]: https://gitlab.o3-shop.com/o3/wave-theme/-/compare/v1.0.0...v1.0.1
+[v1.0.0]: https://gitlab.o3-shop.com/o3/wave-theme/-/tags/v1.0.0
 [O3-Shop]: https://www.o3-shop.com/
 [1.6.2]: https://github.com/OXID-eSales/wave-theme/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/OXID-eSales/wave-theme/compare/v1.6.0...v1.6.1

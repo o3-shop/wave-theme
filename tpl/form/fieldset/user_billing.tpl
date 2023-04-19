@@ -217,6 +217,9 @@
     [{/if}]
 [{/block}]
 
+[{block name="captcha_form"}]
+[{/block}]
+
 <div class="form-group row">
     <div class="offset-lg-3 col-lg-9 col-12">
         <p class="alert alert-info">[{oxmultilang ident="COMPLETE_MARKED_FIELDS"}]</p>
