@@ -25,6 +25,9 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "o3-shop/shop-ce": "^1.2"
+    },
     "minimum-stability": "dev",
     "extra": {
         "oxideshop": {
