@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## [v1.1.0] - 2023-04-24
+
+### Added
+- template block for Captcha module
+
+### Changed
+- decoded config items for mySQL 8 compatibility
+
 ## [v1.0.1] - 2023-03-27
 
 ### Fixed
@@ -235,6 +243,7 @@ in:
 
 ## 1.0.0 -  2019-01-21
 
+[v1.1.0]: https://gitlab.o3-shop.com/o3/wave-theme/-/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://gitlab.o3-shop.com/o3/wave-theme/-/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://gitlab.o3-shop.com/o3/wave-theme/-/tags/v1.0.0
 [O3-Shop]: https://www.o3-shop.com/

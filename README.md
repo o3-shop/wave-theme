@@ -4,14 +4,8 @@
 
 *Wave* is a responsive theme for all O3-Shop editions. Theme is built on the top of [Flow theme](https://gitlab.o3-shop.com/o3/flow-theme).
 
-## Branch Compatibility
-
-* master branch is compatible with O3-Shop compilation master
-* b-1.x branch is compatible with O3-Shop compilation 6.1, 6.2 and 6.3
-
 ## Installation
 If you want to extend the theme you need to clone the repository (see section development) as some soures are ignored on composer installation. 
-
 
 ### Step 1: Get the source code
 
@@ -42,27 +36,27 @@ All *Wave* theme related CSS/Javascript files can be found in theme's ``build`` 
 
 To get the development files you need to clone the repository
 
-	cd DOCUMENT_ROOT/Application/views/
-	git clone -b BRANCH_NAME https://gitlab.o3-shop.com/o3/wave-theme.git wave
-	
+    cd DOCUMENT_ROOT/Application/views/
+    git clone -b BRANCH_NAME https://gitlab.o3-shop.com/o3/wave-theme.git wave
+    
 1. To use ``grunt``, ``npm`` is required. Check ``nodejs`` website for installation
 instructions (https://nodejs.org/en/download/package-manager/). Example of
 Installation on ubuntu system:
 
-	```
-	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-	sudo apt-get install -y nodejs
-	```
+    ```
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    ```
 
 2. Install ``grunt`` globally. Example:
 
-	```
+    ```
     sudo npm install -g grunt-cli
     ```
 
 3. Go to "wave" theme's directory and install all related ``grunt`` plugins:
 
-	```
+    ```
     cd DOCUMENT_ROOT/Application/views/wave/
     npm install
     ```
@@ -70,9 +64,9 @@ Installation on ubuntu system:
 4. Now its possible to regenerate "wave" theme assets by running ``grunt`` default
 task while being in "wave" directory:
 
-	```
-	grunt
-	```
+    ```
+    grunt
+    ```
 
 ## Contributing
 
