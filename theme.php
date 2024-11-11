@@ -372,12 +372,12 @@ $aTheme = array(
             'type'  => 'str',
             'value' => 'O3-Shop, Musterstraße 17, 12345 Musterstadt',
         ),
-        array(
-            'group' => 'footer',
-            'name'  => 'sGooglePlusUrl',
-            'type'  => 'str',
-            'value' => 'https://plus.google.com',
-        ),
+		array(
+			'group' => 'footer',
+			'name'  => 'sInstagramUrl',
+			'type'  => 'str',
+			'value' => 'https://www.instagram.com/',
+		),
         array(
             'group' => 'googlets',
             'name'  => 'sGoogleShoppingAccountId',
@@ -467,7 +467,7 @@ $aTheme = array(
             'group' => 'footer',
             'name'  => 'sTwitterUrl',
             'type'  => 'str',
-            'value' => 'https://twitter.com',
+            'value' => 'https://x.com/',
         ),
         array(
             'group' => 'footer',

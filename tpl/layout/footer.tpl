@@ -96,24 +96,24 @@
                             </a>
                         </li>
                         [{/if}]
-                        [{if $oViewConf->getViewThemeParam('sGooglePlusUrl')}]
-                        <li class="social-links-item">
-                            <a target="_blank" class="social-links-link"
-                               rel="noopener"
-                               href="[{$oViewConf->getViewThemeParam('sGooglePlusUrl')}]">
-                                <i class="fab fa-google-plus-square"></i> <span>Google+</span>
-                            </a>
-                        </li>
-                        [{/if}]
-                        [{if $oViewConf->getViewThemeParam('sTwitterUrl')}]
-                        <li class="social-links-item">
-                            <a target="_blank" class="social-links-link"
-                               rel="noopener"
-                               href="[{$oViewConf->getViewThemeParam('sTwitterUrl')}]">
-                                <i class="fab fa-twitter"></i> <span>Twitter</span>
-                            </a>
-                        </li>
-                        [{/if}]
+                            [{if $oViewConf->getViewThemeParam('sInstagramUrl')}]
+                                <li class="social-links-item">
+                                    <a target="_blank" class="social-links-link"
+                                       rel="noopener"
+                                       href="[{$oViewConf->getViewThemeParam('sInstagramUrl')}]">
+                                        <i class="fab fa-instagram"></i>" <span>Instagram</span>
+                                    </a>
+                                </li>
+                            [{/if}]
+                            [{if $oViewConf->getViewThemeParam('sTwitterUrl')}]
+                                <li class="social-links-item">
+                                    <a target="_blank" class="social-links-link"
+                                       rel="noopener"
+                                       href="[{$oViewConf->getViewThemeParam('sTwitterUrl')}]">
+                                        <i class="fab fa-twitter"></i> <span>X (Twitter)</span>
+                                    </a>
+                                </li>
+                            [{/if}]
                         [{if $oViewConf->getViewThemeParam('sYouTubeUrl')}]
                         <li class="social-links-item">
                             <a target="_blank" class="social-links-link"
