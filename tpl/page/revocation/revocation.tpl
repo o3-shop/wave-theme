@@ -19,9 +19,11 @@
 
         [{* Operator notice block — rendered above the form via {oxifcontent}. *}]
         [{* Rendered ONLY when the snippet is active and non-empty for the *}]
-        [{* current language (the {oxifcontent} block short-circuits otherwise). *}]
+        [{* current language ({oxifcontent} short-circuits otherwise). The mb-4 *}]
+        [{* utility lives on the div itself, so spacing only appears when there *}]
+        [{* is something to space — empty notice = no div = no extra gap. *}]
         [{oxifcontent ident="o3_revocation_notice" object="oCont"}]
-            <div class="o3-revocation-notice">
+            <div class="o3-revocation-notice mt-3 mb-4">
                 [{$oCont->oxcontents__oxcontent->getRawValue()}]
             </div>
         [{/oxifcontent}]
