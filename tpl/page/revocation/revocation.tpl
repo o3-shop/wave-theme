@@ -3,8 +3,14 @@
 [{* §356a BGB electronic revocation form (issue #99). *}]
 [{* Markup conforms to the spec's "Form markup contract": single <form>, *}]
 [{* type=email + required on the email field, label-for binding, *}]
-[{* aria-required + visible required marker on mandatory fields, *}]
-[{* aria-describedby linking field to error on rejection, single submit button. *}]
+[{* aria-required on mandatory fields (`req` class on label adds the visible *}]
+[{* asterisk via wave CSS), aria-describedby linking field to error on *}]
+[{* rejection, single submit button. *}]
+
+[{* Wire jqBootstrapValidation on every input/textarea so live client-side *}]
+[{* feedback (invalid-icon overlay, red helper text) matches the contact *}]
+[{* form's pattern. Server-side validation still runs unconditionally. *}]
+[{oxscript add="$('#o3-revocation-form input, #o3-revocation-form textarea').not('[type=submit]').jqBootstrapValidation();"}]
 
 <div class="o3-revocation page-content">
     <div class="container">
@@ -26,83 +32,100 @@
               class="o3-revocation-form"
               method="post"
               action="[{$oViewConf->getSelfActionLink()}]"
-              novalidate>
+              role="form"
+              novalidate="novalidate">
             [{$oViewConf->getHiddenSid()}]
             <input type="hidden" name="cl" value="revocation">
             <input type="hidden" name="fnc" value="submit">
 
+            [{* Each field wraps the input in a `.controls` div so *}]
+            [{* jqBootstrapValidation can append its `.help-block` message *}]
+            [{* element there (jqBootstrapValidation.js:98 hard-codes the *}]
+            [{* selector `$controlGroup.find('.controls')`). Without it, the *}]
+            [{* invalid-state class lands on the form-group but the message *}]
+            [{* itself has no place to render. *}]
+
             [{* Name *}]
-            <div class="form-group [{if $errors.o3rev_name}]has-error[{/if}]">
-                <label for="o3rev_name">
+            <div class="form-group[{if $errors.o3rev_name}] oxInValid[{/if}]">
+                <label class="req control-label" for="o3rev_name">
                     [{oxmultilang ident="O3_REVOCATION_FIELD_NAME_LABEL"}]
-                    <span class="o3-required-marker" aria-hidden="true">*</span>
                 </label>
-                <input type="text"
-                       id="o3rev_name"
-                       name="o3rev_name"
-                       class="form-control"
-                       value="[{$oView->getName()|escape:'html'}]"
-                       required
-                       aria-required="true"
-                       [{if $errors.o3rev_name}]aria-invalid="true" aria-describedby="o3rev_name_err"[{/if}]>
-                [{if $errors.o3rev_name}]
-                    <span id="o3rev_name_err" class="form-error">[{oxmultilang ident=$errors.o3rev_name}]</span>
-                [{/if}]
+                <div class="controls">
+                    <input type="text"
+                           id="o3rev_name"
+                           name="o3rev_name"
+                           class="form-control"
+                           value="[{$oView->getName()|escape:'html'}]"
+                           required="required"
+                           aria-required="true"
+                           data-validation-required-message="[{oxmultilang ident="O3_REVOCATION_VALIDATION_REQUIRED"}]"
+                           [{if $errors.o3rev_name}]aria-invalid="true" aria-describedby="o3rev_name_err"[{/if}]>
+                    [{if $errors.o3rev_name}]
+                        <div id="o3rev_name_err" class="alert alert-danger">[{oxmultilang ident=$errors.o3rev_name}]</div>
+                    [{/if}]
+                </div>
             </div>
 
             [{* Order identification *}]
-            <div class="form-group [{if $errors.o3rev_orderident}]has-error[{/if}]">
-                <label for="o3rev_orderident">
+            <div class="form-group[{if $errors.o3rev_orderident}] oxInValid[{/if}]">
+                <label class="req control-label" for="o3rev_orderident">
                     [{oxmultilang ident="O3_REVOCATION_FIELD_ORDERNUMBER_LABEL"}]
-                    <span class="o3-required-marker" aria-hidden="true">*</span>
                 </label>
-                <input type="text"
-                       id="o3rev_orderident"
-                       name="o3rev_orderident"
-                       class="form-control"
-                       value="[{$oView->getOrderIdent()|escape:'html'}]"
-                       required
-                       aria-required="true"
-                       [{if $errors.o3rev_orderident}]aria-invalid="true" aria-describedby="o3rev_orderident_err"[{/if}]>
-                [{if $errors.o3rev_orderident}]
-                    <span id="o3rev_orderident_err" class="form-error">[{oxmultilang ident=$errors.o3rev_orderident}]</span>
-                [{/if}]
+                <div class="controls">
+                    <input type="text"
+                           id="o3rev_orderident"
+                           name="o3rev_orderident"
+                           class="form-control"
+                           value="[{$oView->getOrderIdent()|escape:'html'}]"
+                           required="required"
+                           aria-required="true"
+                           data-validation-required-message="[{oxmultilang ident="O3_REVOCATION_VALIDATION_REQUIRED"}]"
+                           [{if $errors.o3rev_orderident}]aria-invalid="true" aria-describedby="o3rev_orderident_err"[{/if}]>
+                    [{if $errors.o3rev_orderident}]
+                        <div id="o3rev_orderident_err" class="alert alert-danger">[{oxmultilang ident=$errors.o3rev_orderident}]</div>
+                    [{/if}]
+                </div>
             </div>
 
             [{* Email — type=email triggers email-style mobile keyboards *}]
             [{* and HTML5 client-side hint; server still runs FILTER_VALIDATE_EMAIL. *}]
-            <div class="form-group [{if $errors.o3rev_email}]has-error[{/if}]">
-                <label for="o3rev_email">
+            <div class="form-group[{if $errors.o3rev_email}] oxInValid[{/if}]">
+                <label class="req control-label" for="o3rev_email">
                     [{oxmultilang ident="O3_REVOCATION_FIELD_EMAIL_LABEL"}]
-                    <span class="o3-required-marker" aria-hidden="true">*</span>
                 </label>
-                <input type="email"
-                       id="o3rev_email"
-                       name="o3rev_email"
-                       class="form-control"
-                       value="[{$oView->getEmail()|escape:'html'}]"
-                       required
-                       aria-required="true"
-                       [{if $errors.o3rev_email}]aria-invalid="true" aria-describedby="o3rev_email_err"[{/if}]>
-                [{if $errors.o3rev_email}]
-                    <span id="o3rev_email_err" class="form-error">[{oxmultilang ident=$errors.o3rev_email}]</span>
-                [{/if}]
+                <div class="controls">
+                    <input type="email"
+                           id="o3rev_email"
+                           name="o3rev_email"
+                           class="form-control"
+                           value="[{$oView->getEmail()|escape:'html'}]"
+                           required="required"
+                           aria-required="true"
+                           data-validation-required-message="[{oxmultilang ident="O3_REVOCATION_VALIDATION_REQUIRED"}]"
+                           data-validation-email-message="[{oxmultilang ident="O3_REVOCATION_VALIDATION_EMAIL_FORMAT"}]"
+                           [{if $errors.o3rev_email}]aria-invalid="true" aria-describedby="o3rev_email_err"[{/if}]>
+                    [{if $errors.o3rev_email}]
+                        <div id="o3rev_email_err" class="alert alert-danger">[{oxmultilang ident=$errors.o3rev_email}]</div>
+                    [{/if}]
+                </div>
             </div>
 
             [{* Free text — optional, NOT required, NO required marker. *}]
             <div class="form-group">
-                <label for="o3rev_freetext">
+                <label class="control-label" for="o3rev_freetext">
                     [{oxmultilang ident="O3_REVOCATION_FIELD_FREETEXT_LABEL"}]
                 </label>
-                <textarea id="o3rev_freetext"
-                          name="o3rev_freetext"
-                          class="form-control"
-                          rows="4">[{$oView->getFreeText()|escape:'html'}]</textarea>
+                <div class="controls">
+                    <textarea id="o3rev_freetext"
+                              name="o3rev_freetext"
+                              class="form-control"
+                              rows="4">[{$oView->getFreeText()|escape:'html'}]</textarea>
+                </div>
             </div>
 
             [{* Form-level error (token expired, anti-spam reject). *}]
             [{if $errors.form}]
-                <div class="form-error" role="alert">[{oxmultilang ident=$errors.form}]</div>
+                <div class="alert alert-danger" role="alert">[{oxmultilang ident=$errors.form}]</div>
             [{/if}]
 
             [{* Single submit button — labelled "Widerruf bestätigen". *}]

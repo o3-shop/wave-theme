@@ -2,7 +2,7 @@
 [{include file="email/html/header.tpl"
           title="O3_REVOCATION_CUSTOMER_EMAIL_SUBJECT"|oxmultilangassign}]
 
-<p>[{oxmultilang ident="EMAIL_SENDDOWNLOADS_GREETING"}] [{$submission->oxrevocation__oxname->getRawValue()|default:$submission->o3revocation__oxname->getRawValue()|escape:'html'}],</p>
+<p>[{oxmultilang ident="EMAIL_SENDDOWNLOADS_GREETING"}] [{$submission->o3revocation__oxname->getRawValue()|escape:'html'}],</p>
 
 <p>[{oxmultilang ident="O3_REVOCATION_CUSTOMER_EMAIL_BODY_INTRO"}]</p>
 
