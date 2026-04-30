@@ -163,25 +163,6 @@
         [{/if}]
     </footer>
 
-    [{* §356a BGB electronic revocation entry-link (issue #99). *}]
-    [{* Visibility resolved by ViewConfig per the visibility-matrix in spec / D5. *}]
-    [{* On any storefront page the controller layer feeds in $oViewConf->getRevocationLinkVisible(). *}]
-    [{if $oViewConf->getRevocationLinkVisible()}]
-        <div class="o3-revocation-footer">
-            <div class="[{if $blFullwidth}]container[{else}]container-fluid[{/if}]">
-                <section class="o3-revocation-footer-box">
-                    [{block name="o3_footer_revocation"}]
-                        <a class="o3-revocation-footer-link"
-                           href="[{$oViewConf->getSelfLink()}]cl=revocation"
-                           rel="nofollow">
-                            [{oxmultilang ident="O3_REVOCATION_FOOTER_LINK"}]
-                        </a>
-                    [{/block}]
-                </section>
-            </div>
-        </div>
-    [{/if}]
-
     [{oxifcontent ident="oxstdfooter" object="oCont"}]
         <div class="legal">
             <div class="[{if $blFullwidth}]container[{else}]container-fluid[{/if}]">
