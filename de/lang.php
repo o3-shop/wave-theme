@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of O3-Shop.
  *
@@ -18,9 +19,9 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-$sLangName = "Deutsch";
+$sLangName = 'Deutsch';
 
-$aLang = array(
+$aLang = [
     'charset'                                               => 'UTF-8',
 
     // Global
@@ -140,7 +141,7 @@ $aLang = array(
     'DD_SELECT_SALUTATION'                                  => 'Bitte auswählen',
 
     'DD_CATEGORY_RESET_BUTTON'                              => 'Zurücksetzen',
-);
+];
 
 /*
 [{ oxmultilang ident="GENERAL_YOUWANTTODELETE"}]
