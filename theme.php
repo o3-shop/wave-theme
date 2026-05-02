@@ -375,9 +375,9 @@ $aTheme = [
         ],
         [
             'group' => 'footer',
-            'name'  => 'sGooglePlusUrl',
+            'name'  => 'sInstagramUrl',
             'type'  => 'str',
-            'value' => 'https://plus.google.com',
+            'value' => 'https://www.instagram.com/',
         ],
         [
             'group' => 'googlets',
@@ -468,7 +468,7 @@ $aTheme = [
             'group' => 'footer',
             'name'  => 'sTwitterUrl',
             'type'  => 'str',
-            'value' => 'https://twitter.com',
+            'value' => 'https://x.com/',
         ],
         [
             'group' => 'footer',
