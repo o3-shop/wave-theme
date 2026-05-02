@@ -79,4 +79,4 @@ If you are interested in contributing of some changes, Please read [CONTRIBUTING
 
 ## Issues
 
-Please forward all issues to [https://issues.o3-shop.com/](https://github.com/o3-shop/o3-shop/issues) for the project **Wave Theme**.
+Please forward all issues to [https://github.com/o3-shop/o3-shop/issues](https://github.com/o3-shop/o3-shop/issues) for the project **Wave Theme**.
