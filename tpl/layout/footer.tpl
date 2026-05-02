@@ -101,7 +101,7 @@
                                     <a target="_blank" class="social-links-link"
                                        rel="noopener"
                                        href="[{$oViewConf->getViewThemeParam('sInstagramUrl')}]">
-                                        <i class="fab fa-instagram"></i>" <span>Instagram</span>
+                                        <i class="fab fa-instagram"></i> <span>Instagram</span>
                                     </a>
                                 </li>
                             [{/if}]
