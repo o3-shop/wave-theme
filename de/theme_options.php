@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of O3-Shop.
  *
@@ -18,8 +19,7 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-
-$aLang = array(
+$aLang = [
     'charset'                                       => 'UTF-8',
 
     'SHOP_THEME_GROUP_images'                       => 'Bilder',
@@ -105,8 +105,8 @@ $aLang = array(
     'HELP_SHOP_THEME_sYouTubeUrl'                   => 'Bsp.: https://www.youtube.com/user/oxidesales‎',
     'SHOP_THEME_sBlogUrl'                           => 'Blog-URL',
     'HELP_SHOP_THEME_sBlogUrl'                      => 'Bsp.: http://blog.oxid-esales.com',
-    'SHOP_THEME_sGooglePlusUrl'                     => 'Google+ Seiten-URL',
-    'HELP_SHOP_THEME_sGooglePlusUrl'                 => 'Bsp.: https://plus.google.com/114133952363540971062',
+    'SHOP_THEME_sInstagramUrl'                     => 'Instagram Seiten-URL',
+    'HELP_SHOP_THEME_sInstagramUrl'                 => 'Bsp.: https://www.instagram.com',
 
     'SHOP_THEME_sGoogleMapsAddr'                    => 'Ihre Adresse',
     'HELP_SHOP_THEME_sGoogleMapsAddr'               => 'Bsp.: O3-Shop, Musterstraße 17, 12345 Musterstadt',
@@ -212,5 +212,4 @@ $aLang = array(
     'SHOP_THEME_blFullwidthLayout'                  => 'Full-Width Layout aktivieren',
 
     'SHOP_THEME_blEmailsShowProductPictures'        => 'Produktbilder in E-Mails anzeigen',
-
-);
+];

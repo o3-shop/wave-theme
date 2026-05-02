@@ -22,6 +22,11 @@
                 [{/block}]
             [{/oxhasrights}]
             <li><a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account"}]">[{oxmultilang ident="ACCOUNT"}]</a></li>
+            [{if $oViewConf->getRevocationLinkVisible()}]
+                [{block name="o3_footer_revocation"}]
+                    <li><a href="[{$oViewConf->getSelfLink()}]cl=revocation" rel="nofollow">[{oxmultilang ident="O3_REVOCATION_FOOTER_LINK"}]</a></li>
+                [{/block}]
+            [{/if}]
             <li>
                 <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_noticelist"}]">
                     [{oxmultilang ident="WISH_LIST"}]
