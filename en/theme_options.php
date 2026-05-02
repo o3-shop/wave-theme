@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of O3-Shop.
  *
@@ -18,9 +19,9 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-$sLangName  = 'English';
+$sLangName = 'English';
 
-$aLang = array(
+$aLang = [
     'charset'                                       => 'UTF-8',
 
     'SHOP_THEME_GROUP_images'                       => 'Images',
@@ -204,4 +205,4 @@ $aLang = array(
     'SHOP_THEME_blFullwidthLayout'                      => 'Activate full width layout',
 
     'SHOP_THEME_blEmailsShowProductPictures'        => 'Show product pictures in emails',
-);
+];

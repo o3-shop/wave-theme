@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of O3-Shop.
  *
@@ -18,9 +19,9 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-$sLangName = "English";
+$sLangName = 'English';
 
-$aLang = array(
+$aLang = [
     'charset'                                               => 'UTF-8',
 
     // Global
@@ -99,8 +100,8 @@ $aLang = array(
     'WIDGET_PRODUCT_RELATED_PRODUCTS_ACCESSORIES_SUBHEADER' => 'The following products fit well to this product.',
     'WIDGET_PRODUCT_RELATED_PRODUCTS_SIMILAR_SUBHEADER'     => 'Take a look at our similar products.',
     'WIDGET_PRODUCT_RELATED_PRODUCTS_CROSSSELING_SUBHEADER' => 'Customers who viewed this product also viewed the following products.',
-    'DETAILS_VPE_MESSAGE_1'                                 => "This product can only be ordered in packaging units of ",
-    'DETAILS_VPE_MESSAGE_2'                                 => "",
+    'DETAILS_VPE_MESSAGE_1'                                 => 'This product can only be ordered in packaging units of ',
+    'DETAILS_VPE_MESSAGE_2'                                 => '',
     'TO_CART_NOVARIANT'                                     => 'Choose a variant',
 
     // Modal basket
@@ -140,7 +141,7 @@ $aLang = array(
     'DD_SELECT_SALUTATION'                                  => 'Please choose',
 
     'DD_CATEGORY_RESET_BUTTON'                              => 'Reset',
-);
+];
 
 /*
 [{ oxmultilang ident="GENERAL_YOUWANTTODELETE"}]
