@@ -27,7 +27,7 @@ $aTheme = [
     'title'       => 'Wave',
     'description' => 'Wave is O3-Shops official responsive theme based on the CSS framework Bootstrap 4.',
     'thumbnail'   => 'theme.jpg',
-    'version'     => '1.2.1',
+    'version'     => '1.2.2',
     'author'      => '<a href="https://www.o3-shop.com" title="O3-Shop">O3-Shop</a>',
     'settings'    => [
         [
