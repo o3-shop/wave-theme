@@ -26,7 +26,7 @@ INSERT INTO `oxconfig` (`OXID`, `OXSHOPID`, `OXMODULE`, `OXVARNAME`, `OXVARTYPE`
 (uuid(), 1, 'theme:wave', 'aNrofCatArticles', 'arr', 'a:4:{i:0;s:2:"10";i:1;s:2:"20";i:2;s:2:"50";i:3;s:3:"100";}', NOW()),
 (uuid(), 1, 'theme:wave', 'aNrofCatArticlesInGrid', 'arr', 'a:4:{i:0;s:2:"12";i:1;s:2:"16";i:2;s:2:"24";i:3;s:2:"32";}', NOW()),
 (uuid(), 1, 'theme:wave', 'bl_showManufacturerSlider', 'bool', '1', NOW()),
-(uuid(), 1, 'theme:wave', 'sGoogleMapsAddr', 'str', 'O3-Shop, Musterstr. 17, 12345 Musterstadt', NOW()),
+(uuid(), 1, 'theme:wave', 'sGoogleMapsAddr', 'str', '', NOW()),
 (uuid(), 1, 'theme:wave', 'blUseGAPageTracker', 'bool', '1', NOW()),
 (uuid(), 1, 'theme:wave', 'sGATrackingId', 'str', '', NOW()),
 (uuid(), 1, 'theme:wave', 'sFacebookUrl', 'str', 'https://www.facebook.com/', NOW()),

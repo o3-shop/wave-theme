@@ -371,7 +371,7 @@ $aTheme = [
             'group' => 'contact',
             'name'  => 'sGoogleMapsAddr',
             'type'  => 'str',
-            'value' => 'O3-Shop, Musterstraße 17, 12345 Musterstadt',
+            'value' => '',
         ],
         [
             'group' => 'footer',

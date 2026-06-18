@@ -7,6 +7,10 @@
     <h1 class="page-header">[{oxmultilang ident="DD_CONTACT_PAGE_HEADING"}]</h1>
 
     [{assign var="sGoogleMapsAddr" value=$oViewConf->getViewThemeParam('sGoogleMapsAddr')}]
+    [{if !$sGoogleMapsAddr && $oxcmp_shop->oxshops__oxstreet->value}]
+        [{* No custom map address configured: derive it from the shop's contact address. *}]
+        [{assign var="sGoogleMapsAddr" value=$oxcmp_shop->oxshops__oxstreet->value|cat:", "|cat:$oxcmp_shop->oxshops__oxzip->value|cat:" "|cat:$oxcmp_shop->oxshops__oxcity->value|cat:", "|cat:$oxcmp_shop->oxshops__oxcountry->value}]
+    [{/if}]
     [{if $sGoogleMapsAddr}]
         [{*oxscript include="js/libs/pages/contact.min.js" priority=10*}]
 
