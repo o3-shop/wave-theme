@@ -217,8 +217,7 @@
     [{/if}]
 [{/block}]
 
-[{block name="captcha_form"}]
-[{/block}]
+[{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('register')}][{/block}]
 
 <div class="form-group row">
     <div class="offset-lg-3 col-lg-9 col-12">

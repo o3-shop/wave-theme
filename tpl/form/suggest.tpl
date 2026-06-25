@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    [{block name="captcha_form"}][{/block}]
+    [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('suggest')}][{/block}]
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
