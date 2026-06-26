@@ -81,7 +81,7 @@
                 </p>
             </li>
 
-            [{block name="captcha_form"}][{/block}]
+            [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('invite')}][{/block}]
 
             <li class="formSubmit">
                 <button class="submitButton largeButton" type="submit">[{oxmultilang ident="SEND"}]</button>

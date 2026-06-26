@@ -24,7 +24,7 @@
                 <p class="help-block"></p>
             </div>
 
-            [{block name="captcha_form"}][{/block}]
+            [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('forgotpwd')}][{/block}]
 
             <div class="form-group">
                 <button class="btn btn-primary submitButton" type="submit">[{oxmultilang ident="REQUEST_PASSWORD"}]</button>

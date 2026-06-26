@@ -109,7 +109,7 @@
         </div>
     [{/block}]
 
-    [{block name="captcha_form"}][{/block}]
+    [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('contact')}][{/block}]
 
     [{block name="contact_form_buttons"}]
         <div class="form-group">
