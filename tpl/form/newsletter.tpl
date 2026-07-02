@@ -51,7 +51,7 @@
         </div>
     [{/block}]
 
-    [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('newsletter')}][{/block}]
+    [{block name="captcha_form"}][{if method_exists($oViewConf, 'getCaptchaWidget')}][{$oViewConf->getCaptchaWidget('newsletter')}][{/if}][{/block}]
 
     [{block name="newsletter_form_button"}]
         <div class="form-group">

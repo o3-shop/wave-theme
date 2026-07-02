@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    [{block name="captcha_form"}][{$oViewConf->getCaptchaWidget('pricealarm')}][{/block}]
+    [{block name="captcha_form"}][{if method_exists($oViewConf, 'getCaptchaWidget')}][{$oViewConf->getCaptchaWidget('pricealarm')}][{/if}][{/block}]
 
     <div class="form-group">
         <div class="col-lg-9 offset-lg-3">
