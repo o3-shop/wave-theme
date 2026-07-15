@@ -51,6 +51,10 @@
 [{block name="email_plain_order_cust_orderinfo"}][{if $basketproduct->oxarticles__oxorderinfo->value}]
 [{$basketproduct->oxarticles__oxorderinfo->getRawValue()}]
 [{/if}][{/block}]
+[{block name="email_plain_order_cust_guarantee"}][{if $oViewConf->getDurabilityGuaranteeLabelVisible() && $basketproduct->isDurabilityGuaranteeLabelEligible()}][{assign var="guaranteeMonths" value=$basketproduct->getGuaranteeDurationMonths()}]
+[{oxmultilang ident="O3_GUARANTEE_LABEL_HEADING"}]: [{if $guaranteeMonths mod 12 == 0}][{math equation="m/12" m=$guaranteeMonths}] [{oxmultilang ident="O3_GUARANTEE_LABEL_DURATION_SUFFIX"}][{else}][{$guaranteeMonths}] [{oxmultilang ident="O3_GUARANTEE_LABEL_DURATION_SUFFIX_MONTHS"}][{/if}][{if $basketproduct->getGuaranteeGuarantor()}] - [{$basketproduct->getGuaranteeGuarantor()}][{/if}][{if $basketproduct->getGuaranteeConditions()}]
+[{oxmultilang ident="O3_GUARANTEE_LABEL_CONDITIONS_LABEL"}]: [{$basketproduct->getGuaranteeConditions()}][{/if}]
+[{/if}][{/block}]
 
 [{assign var=dRegUnitPrice value=$basketitem->getRegularUnitPrice()}]
 [{assign var=dUnitPrice value=$basketitem->getUnitPrice()}]

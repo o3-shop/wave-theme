@@ -237,6 +237,22 @@
                                         [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
                                     </div>
                                 [{/block}]
+
+                                [{block name="order_guaranteelabels"}]
+                                    [{if $oView->isDurabilityGuaranteeLabelVisible()}]
+                                        <div class="o3-guarantee-order">
+                                            [{foreach from=$oView->getBasket()->getContents() item=guaranteeBasketItem}]
+                                                [{assign var="guaranteeArticle" value=$guaranteeBasketItem->getArticle()}]
+                                                [{if $guaranteeArticle->isDurabilityGuaranteeLabelEligible()}]
+                                                    <div class="o3-guarantee-order__item">
+                                                        <span class="o3-guarantee-order__title">[{$guaranteeArticle->oxarticles__oxtitle->value}]</span>
+                                                        [{include file="page/details/inc/guaranteelabel.tpl" guaranteeProduct=$guaranteeArticle}]
+                                                    </div>
+                                                [{/if}]
+                                            [{/foreach}]
+                                        </div>
+                                    [{/if}]
+                                [{/block}]
                             </div>
                         </div>
                     </form>

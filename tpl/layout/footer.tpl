@@ -174,6 +174,17 @@
             </div>
         </div>
     [{/oxifcontent}]
+    [{block name="footer_guaranteenotice"}]
+        [{if $oViewConf->getLegalGuaranteeNoticeVisible() && $oViewConf->getLegalGuaranteeNoticePlacement() == 'footer'}]
+            <div class="legal">
+                <div class="[{if $blFullwidth}]container[{else}]container-fluid[{/if}]">
+                    <section class="legal-box">
+                        [{include file="layout/inc/guaranteenotice.tpl"}]
+                    </section>
+                </div>
+            </div>
+        [{/if}]
+    [{/block}]
     [{/block}]
 
     [{if $oView->isRootCatChanged()}]

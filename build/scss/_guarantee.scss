@@ -1,0 +1,57 @@
+// EU harmonised guarantee labels (EmpCo Directive (EU) 2024/825, Implementing
+// Regulation (EU) 2025/1960; issue #219).
+//
+// The legal-guarantee notice is fixed EU artwork rendered as an image; the
+// only structural requirement is to cap its display width (the source asset is
+// ~1200px wide) — a matching inline max-width also lives on the <img> so the
+// notice renders sanely even before this stylesheet is recompiled. The
+// durability-guarantee label is a semantic text block; these rules are light
+// presentation only, and the feature degrades gracefully without them.
+
+.o3-guarantee-notice {
+    margin: 1.5rem 0;
+
+    &__label {
+        display: block;
+        width: 420px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    &__info {
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+.o3-guarantee-label {
+    display: inline-block;
+    margin: 0.75rem 0;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    line-height: 1.4;
+
+    &__heading {
+        display: block;
+        font-weight: 700;
+    }
+
+    &__conditions {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+.o3-guarantee-order {
+    margin: 1rem 0;
+
+    &__item {
+        margin-bottom: 0.5rem;
+    }
+
+    &__title {
+        font-weight: 700;
+    }
+}

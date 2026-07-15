@@ -163,6 +163,17 @@
                                     <b>[{oxmultilang ident="PRODUCT_NO" suffix="COLON"}] [{$basketproduct->oxarticles__oxartnum->value}]</b>
                                 </p>
                             [{/block}]
+                            [{block name="email_html_order_cust_basketitem_guarantee"}]
+                                [{if $oViewConf->getDurabilityGuaranteeLabelVisible() && $basketproduct->isDurabilityGuaranteeLabelEligible()}]
+                                    [{assign var="guaranteeMonths" value=$basketproduct->getGuaranteeDurationMonths()}]
+                                    <p>
+                                        <b>[{oxmultilang ident="O3_GUARANTEE_LABEL_HEADING" suffix="COLON"}]</b>
+                                        [{if $guaranteeMonths mod 12 == 0}][{math equation="m/12" m=$guaranteeMonths}] [{oxmultilang ident="O3_GUARANTEE_LABEL_DURATION_SUFFIX"}][{else}][{$guaranteeMonths}] [{oxmultilang ident="O3_GUARANTEE_LABEL_DURATION_SUFFIX_MONTHS"}][{/if}]
+                                        [{if $basketproduct->getGuaranteeGuarantor()}]&ndash; [{$basketproduct->getGuaranteeGuarantor()}][{/if}]
+                                        [{if $basketproduct->getGuaranteeConditions()}]<br>[{oxmultilang ident="O3_GUARANTEE_LABEL_CONDITIONS_LABEL" suffix="COLON"}] [{$basketproduct->getGuaranteeConditions()}][{/if}]
+                                    </p>
+                                [{/if}]
+                            [{/block}]
                             [{if $oViewConf->getShowGiftWrapping()}]
                                 [{assign var="oWrapping" value=$basketitem->getWrapping()}]
                                 <p>
@@ -557,6 +568,26 @@
 
 [{block name="email_html_order_cust_orderemailend"}]
     <p>[{oxcontent ident="oxuserorderemailend"}]</p>
+[{/block}]
+
+[{* EU harmonised legal-guarantee notice in the order confirmation email        *}]
+[{* (German EmpCo transposition, § 312j Abs. 2 BGB n.F.; issue #219). Fixed EU   *}]
+[{* colour artwork, per-language (de + en shipped, otherwise English fallback),  *}]
+[{* never edited. getImageUrl() yields an absolute URL suitable for email.       *}]
+[{block name="email_html_order_cust_guaranteenotice"}]
+    [{if $oViewConf->getLegalGuaranteeNoticeVisible()}]
+        [{assign var="glNoticeAbbr" value=$oViewConf->getActLanguageAbbr()}]
+        [{if $glNoticeAbbr != "de" && $glNoticeAbbr != "en"}][{assign var="glNoticeAbbr" value="en"}][{/if}]
+        [{assign var="glNoticeImg" value="lang/guarantee-notice-"|cat:$glNoticeAbbr|cat:".jpg"}]
+        <h3 class="underline">[{oxmultilang ident="O3_GUARANTEE_NOTICE_HEADING"}]</h3>
+        <p>
+            <img src="[{$oViewConf->getImageUrl($glNoticeImg)}]"
+                 alt="[{oxmultilang ident="O3_GUARANTEE_NOTICE_HEADING"}]"
+                 border="0" hspace="0" vspace="0"
+                 style="max-width:100%;width:420px;height:auto;">
+        </p>
+        <br>
+    [{/if}]
 [{/block}]
 
 [{include file="email/html/footer.tpl"}]
