@@ -86,13 +86,6 @@
             [{block name="details_productmain_morepics"}]
                 [{include file="page/details/inc/morepics.tpl"}]
             [{/block}]
-
-            [{* EU durability-guarantee label - next to the picture of the good, Recital 28 (issue #219). *}]
-            [{block name="o3_details_guarantee_label"}]
-                [{assign var="oGuaranteeArticle" value=$oDetailsProduct}]
-                [{assign var="sGuaranteeContext" value="o3-guarantee-label--detail"}]
-                [{include file="page/details/inc/guaranteelabel.tpl"}]
-            [{/block}]
         </div>
 
         <div class="col-12 col-sm-8 col-md-5 col-lg-6 details-col-middle">
@@ -239,6 +232,12 @@
                         [{/block}]
                     </div>
                 </div>
+
+                [{block name="o3_details_guarantee_label"}]
+                    [{assign var="oGuaranteeArticle" value=$oDetailsProduct}]
+                    [{assign var="sGuaranteeContext" value="o3-guarantee--detail"}]
+                    [{include file="page/details/inc/guaranteelabel.tpl"}]
+                [{/block}]
 
                 <div class="tobasket">
                     [{* pers params *}]

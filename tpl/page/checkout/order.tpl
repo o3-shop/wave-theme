@@ -242,7 +242,7 @@
                                 [{block name="o3_order_guarantee_labels"}]
                                     [{foreach from=$oxcmp_basket->getContents() item=guaranteeBasketItem}]
                                         [{assign var="oGuaranteeArticle" value=$guaranteeBasketItem->getArticle()}]
-                                        [{assign var="sGuaranteeContext" value="o3-guarantee-label--order"}]
+                                        [{assign var="sGuaranteeContext" value="o3-guarantee--order"}]
                                         [{include file="page/details/inc/guaranteelabel.tpl"}]
                                     [{/foreach}]
                                 [{/block}]

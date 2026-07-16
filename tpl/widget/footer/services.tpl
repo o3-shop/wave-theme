@@ -27,6 +27,18 @@
                     <li><a href="[{$oViewConf->getSelfLink()}]cl=revocation" rel="nofollow">[{oxmultilang ident="O3_REVOCATION_FOOTER_LINK"}]</a></li>
                 [{/block}]
             [{/if}]
+            [{block name="o3_footer_guarantee_notice"}]
+                [{if method_exists($oViewConf, 'getGuaranteeNoticeUrl') && $oViewConf->getGuaranteeNoticeUrl()}]
+                    <li class="footer__guarantee-rights">
+                        <details class="o3-guarantee-rights">
+                            <summary class="o3-guarantee-rights__link">[{oxmultilang ident="O3_GUARANTEE_RIGHTS_LINK"}]</summary>
+                            <div class="o3-guarantee-rights__panel">
+                                [{include file="layout/inc/guaranteenotice.tpl"}]
+                            </div>
+                        </details>
+                    </li>
+                [{/if}]
+            [{/block}]
             <li>
                 <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_noticelist"}]">
                     [{oxmultilang ident="WISH_LIST"}]
