@@ -4,7 +4,9 @@
     [{assign var="sGuaranteeNoticeUrl" value=$oViewConf->getGuaranteeNoticeUrl()}]
     [{if $sGuaranteeNoticeUrl}]
         <div class="o3-guarantee-notice">
-            <img src="[{$sGuaranteeNoticeUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_ALT"}]" loading="lazy" class="o3-guarantee-notice__img">
+            <a href="[{$sGuaranteeNoticeUrl}]" target="_blank" rel="noopener" class="o3-guarantee-notice__link">
+                <img src="[{$sGuaranteeNoticeUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_ALT"}]" loading="lazy" class="o3-guarantee-notice__img">
+            </a>
             [{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
                 <div class="o3-guarantee-notice__info">[{$oGuaranteeCont->oxcontents__oxcontent->value}]</div>
             [{/oxifcontent}]

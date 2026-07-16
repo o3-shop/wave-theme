@@ -5,7 +5,9 @@
     [{assign var="sGuaranteeGuarantor" value=$oGuaranteeArticle->getGuaranteeGuarantor()}]
     <div class="o3-guarantee-label [{$sGuaranteeContext}]">
         [{if $sGuaranteeLabelUrl}]
-            <img src="[{$sGuaranteeLabelUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_LABEL_IMG_ALT"}]" loading="lazy" class="o3-guarantee-label__img">
+            <a href="[{$sGuaranteeLabelUrl}]" target="_blank" rel="noopener" class="o3-guarantee-label__link">
+                <img src="[{$sGuaranteeLabelUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_LABEL_IMG_ALT"}]" loading="lazy" class="o3-guarantee-label__img">
+            </a>
         [{elseif $sGuaranteeGuarantor}]
             <p class="o3-guarantee-label__fallback">
                 [{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_DURATION" args=$oGuaranteeArticle->getGuaranteeYears()}]
