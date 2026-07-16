@@ -48,7 +48,7 @@
         <div class="o3-guarantee o3-guarantee--fallback [{$sGuaranteeContext}]">
             <p class="o3-guarantee__fallback">
                 [{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_DURATION" args=$oGuaranteeArticle->getGuaranteeYears()}]
-                ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor}]).
+                ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor|escape}]).
                 [{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_NOTE"}]
                 [{oxmultilang ident="O3_GUARANTEE_LEGAL_REMINDER"}]
             </p>

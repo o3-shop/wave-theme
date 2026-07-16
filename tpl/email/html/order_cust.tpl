@@ -193,7 +193,7 @@
                             [{elseif $sGuaranteeGuarantor}]
                                 <p style="margin:8px 0;font-size:12px;">
                                     [{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_DURATION" args=$oGuaranteeArticle->getGuaranteeYears()}]
-                                    ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor}]).
+                                    ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor|escape}]).
                                     [{oxmultilang ident="O3_GUARANTEE_LEGAL_REMINDER"}]
                                 </p>
                             [{/if}]
