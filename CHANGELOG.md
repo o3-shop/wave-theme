@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## [1.3.0] - 2026-07-16
+
+### Added
+- EU guarantee labels (#219) — shop-global legal-guarantee notice (footer) and producer durability-guarantee label (product page, order page, order email). Requires shop-ce with #219 core (graceful no-op on older shops).
+
 ## [v1.1.0] - 2023-04-24
 
 ### Added

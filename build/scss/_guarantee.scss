@@ -1,0 +1,49 @@
+// EU guarantee labels (#219). Colour rendering is legally mandatory - never filter these images.
+.o3-guarantee-notice {
+    margin: 1rem 0;
+
+    &__img {
+        display: block;
+        max-width: 340px;
+        width: 100%;
+        height: auto;
+    }
+
+    &__info {
+        margin-top: .5rem;
+        font-size: .875rem;
+    }
+}
+
+.o3-guarantee-label {
+    margin: 1rem 0;
+
+    &__img {
+        display: block;
+        max-width: 260px;
+        width: 100%;
+        height: auto;
+    }
+
+    &__fallback {
+        font-size: .875rem;
+        margin: .5rem 0;
+    }
+
+    &__conditions {
+        margin-top: .5rem;
+        font-size: .875rem;
+
+        summary {
+            cursor: pointer;
+        }
+    }
+
+    &--order {
+        margin: .5rem 0 .5rem 1rem;
+
+        .o3-guarantee-label__img {
+            max-width: 200px;
+        }
+    }
+}
