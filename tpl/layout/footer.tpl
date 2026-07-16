@@ -174,6 +174,18 @@
             </div>
         </div>
     [{/oxifcontent}]
+
+    [{* Legally mandatory EU guarantee notice - placed OUTSIDE the oxstdfooter *}]
+    [{* oxifcontent guard so a disabled CMS footer cannot hide it (issue #219). *}]
+    [{block name="o3_footer_guarantee_notice"}]
+        <div class="legal">
+            <div class="[{if $blFullwidth}]container[{else}]container-fluid[{/if}]">
+                <section class="legal-box">
+                    [{include file="layout/inc/guaranteenotice.tpl"}]
+                </section>
+            </div>
+        </div>
+    [{/block}]
     [{/block}]
 
     [{if $oView->isRootCatChanged()}]
