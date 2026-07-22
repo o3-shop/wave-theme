@@ -237,6 +237,15 @@
                                         [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
                                     </div>
                                 [{/block}]
+
+                                [{* EU durability-guarantee labels on the order-final page, Sect. 312j Abs. 2 BGB (issue #219). *}]
+                                [{block name="o3_order_guarantee_labels"}]
+                                    [{foreach from=$oxcmp_basket->getContents() item=guaranteeBasketItem}]
+                                        [{assign var="oGuaranteeArticle" value=$guaranteeBasketItem->getArticle()}]
+                                        [{assign var="sGuaranteeContext" value="o3-guarantee--order"}]
+                                        [{include file="page/details/inc/guaranteelabel.tpl"}]
+                                    [{/foreach}]
+                                [{/block}]
                             </div>
                         </div>
                     </form>
