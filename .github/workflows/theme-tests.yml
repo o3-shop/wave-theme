@@ -1,0 +1,152 @@
+name: Theme Tests (shop-ce)
+
+# Runs the O3-Shop shop-ce PHPUnit suite with THIS theme checkout installed, so
+# a change to the Wave theme is verified against the shop it ships with. This is
+# the inverse of shop-ce's own `code-quality.yml`, which pulls the wave theme
+# from `main`; here the theme under test comes from the pushed/PR commit.
+#
+# PHP 8.2 only (per project decision) — shop-ce covers the full 7.4–8.2 matrix
+# on its side, so the theme only needs to prove it works on the current line.
+
+on:
+  push:
+  pull_request:
+
+# A new commit on the same ref cancels the still-running superseded job.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # shop-ce branch (release line) the theme is tested against. Bump when the
+  # theme targets a newer shop line.
+  SHOP_CE_BRANCH: b-1.7
+  # b-1.7 isn't a version-shaped branch, so Composer can't infer the root
+  # package version — set it explicitly.
+  COMPOSER_ROOT_VERSION: dev-b-1.7
+
+jobs:
+  shop-ce-tests:
+    name: shop-ce Unit tests (PHP 8.2) with Wave theme
+    runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: mariadb:10.10
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: o3shop_test
+          MYSQL_USER: o3shop
+          MYSQL_PASSWORD: o3shop
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: ⬇️ Checkout Wave theme (under test)
+        uses: actions/checkout@v7
+        with:
+          path: wave-theme
+
+      - name: ⬇️ Checkout shop-ce (${{ env.SHOP_CE_BRANCH }})
+        uses: actions/checkout@v7
+        with:
+          repository: o3-shop/shop-ce
+          ref: ${{ env.SHOP_CE_BRANCH }}
+          path: shop
+
+      - name: 🐘 Setup PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, json, tokenizer, pdo, pdo_mysql, mysqli, gd, soap, bcmath, intl, zip
+          coverage: none
+
+      - name: ⬇️ Install Composer 2.2
+        run: |
+          echo "::group::Install Composer"
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php --version=2.2.28
+          php -r "unlink('composer-setup.php');"
+          sudo mv composer.phar /usr/local/bin/composer
+          composer --version
+          echo "::endgroup::"
+
+      - name: 📦 Cache Composer downloads
+        uses: actions/cache@v6
+        with:
+          # shop-ce's composer.lock is gitignored, so we cache only Composer's
+          # download cache (not vendor) and let vendor rebuild fresh each run.
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-composer-${{ hashFiles('shop/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: 🔧 Copy CI config files
+        working-directory: shop
+        run: |
+          cp .env.ci .env
+          cp source/config.inc.php.dist source/config.inc.php
+          # .env.ci hardcodes shop-ce's own runner path; repoint it at this
+          # workspace, where shop-ce lives under ./shop.
+          sed -i "s#/home/runner/work/shop-ce/shop-ce#${GITHUB_WORKSPACE}/shop#g" .env
+
+      - name: 📥 Install shop-ce dependencies
+        working-directory: shop
+        run: |
+          echo "::group::Composer Install"
+          composer install --prefer-dist --no-progress
+          echo "::endgroup::"
+          echo "::group::Install O3-Theme (base theme, mirrors shop-ce CI)"
+          composer require o3-shop/o3-theme:dev-main --prefer-dist --no-progress
+          echo "::endgroup::"
+          echo "::group::Apt Install"
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils rsync
+          echo "::endgroup::"
+
+      - name: 🎨 Install Wave theme from checkout
+        run: |
+          echo "::group::Wave Theme Installation"
+          # Built assets → shop's out dir (served at runtime).
+          mkdir -p shop/source/out
+          cp -r wave-theme/out/* shop/source/out/
+          # Theme sources → Application/views/wave (excluding the built out dir
+          # and VCS metadata, mirroring shop-ce's own theme-install step).
+          mkdir -p shop/source/Application/views/wave
+          rsync -a --exclude '.git' --exclude 'out' wave-theme/ shop/source/Application/views/wave/
+          echo "Wave theme installed from checkout"
+          echo "::endgroup::"
+
+      - name: 🩹 Patch testing library (MariaDB --skip-ssl fix)
+        working-directory: shop
+        run: |
+          sed -i "s/ --skip-ssl//g" \
+            vendor/o3-shop/testing-library/library/Services/Library/DatabaseHandler.php
+          grep -n "skip-ssl" vendor/o3-shop/testing-library/library/Services/Library/DatabaseHandler.php \
+            && echo "PATCH FAILED - still found" || echo "PATCH OK - removed"
+
+      - name: ⏳ Wait for MariaDB (ready check)
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot --silent; do
+            echo 'Waiting for MariaDB...'
+            sleep 1
+          done
+
+      - name: 🗄️ Create test database
+        run: mysql -h 127.0.0.1 -P 3306 -u root -proot -e "CREATE DATABASE IF NOT EXISTS o3shop_test;"
+
+      - name: ✅ Run shop-ce PHPUnit (Unit suite, Wave theme installed)
+        working-directory: shop
+        run: |
+          echo "::group::PHPUnit"
+          php vendor/bin/phpunit \
+            --bootstrap vendor/o3-shop/testing-library/bootstrap.php \
+            -c tests/phpunit.xml \
+            tests/Unit \
+            --exclude-group quarantine \
+            --colors=always
+          echo "::endgroup::"
