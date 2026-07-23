@@ -25,8 +25,10 @@ env:
   # theme targets a newer shop line.
   SHOP_CE_BRANCH: b-1.7
   # b-1.7 isn't a version-shaped branch, so Composer can't infer the root
-  # package version — set it explicitly.
-  COMPOSER_ROOT_VERSION: dev-b-1.7
+  # package version. It must be the NUMERIC x-dev form (b-1.6 aliases to
+  # 1.6-dev, so b-1.7 → 1.7.x-dev) — a `dev-b-1.7` branch version would not
+  # satisfy shop-composer-plugin's `o3-shop/shop-ce: ^1.2.0` constraint.
+  COMPOSER_ROOT_VERSION: 1.7.x-dev
 
 jobs:
   shop-ce-tests:
