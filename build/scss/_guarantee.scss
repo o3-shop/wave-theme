@@ -125,6 +125,9 @@
 
 // EU legal-guarantee notice artwork revealed inside the footer reveal panel.
 .o3-guarantee-notice {
+    // Hug the artwork instead of stretching the bordered box full width (#219 review).
+    width: fit-content;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;

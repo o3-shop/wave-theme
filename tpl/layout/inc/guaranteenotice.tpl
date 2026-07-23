@@ -8,12 +8,11 @@
             <a href="[{$sGuaranteeNoticeUrl}]" target="_blank" rel="noopener" class="o3-guarantee-notice__link">
                 <img src="[{$sGuaranteeNoticeUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_ALT"}]" loading="lazy" class="o3-guarantee-notice__img">
             </a>
-            <div class="o3-guarantee-notice__side">
-                [{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
+            [{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
+                <div class="o3-guarantee-notice__side">
                     <div class="o3-guarantee-notice__info">[{$oGuaranteeCont->oxcontents__oxcontent->value}]</div>
-                [{/oxifcontent}]
-                <span class="o3-guarantee-notice__hint">[{oxmultilang ident="O3_GUARANTEE_CLOSE"}]</span>
-            </div>
+                </div>
+            [{/oxifcontent}]
         </div>
     [{/if}]
 [{/if}]

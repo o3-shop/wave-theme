@@ -12,7 +12,10 @@
             [{oxscript add="var aMorePic=new Array();"}]
             [{foreach from=$oView->getIcons() key="iPicNr" item="oArtIcon" name="sMorePics"}]
                 [{assign var="sPictureName" value=$oPictureProduct->getPictureFieldValue("oxpic", $iPicNr)}]
-                [{assign var="aPictureInfo" value=$oConfig->getMasterPicturePath("product/`$iPicNr`/`$sPictureName`")|@getimagesize}]
+                [{* Guard getimagesize() against an empty/unresolved path (PHP 8 ValueError). *}]
+                [{assign var="sPicturePath" value=$oConfig->getMasterPicturePath("product/`$iPicNr`/`$sPictureName`")}]
+                [{assign var="aPictureInfo" value=""}]
+                [{if $sPicturePath}][{assign var="aPictureInfo" value=$sPicturePath|@getimagesize}][{/if}]
                 <li class="details-picture-more-list-item">
                     <a id="morePics_[{$smarty.foreach.sMorePics.iteration}]"  class="details-picture-more-link[{if $smarty.foreach.sMorePics.first}] selected[{/if}]" href="[{$oPictureProduct->getPictureUrl($iPicNr)}]" data-num="[{$smarty.foreach.sMorePics.iteration}]"[{if $aPictureInfo}] data-width="[{$aPictureInfo.0}]" data-height="[{$aPictureInfo.1}]"[{/if}] data-zoom-url="[{$oPictureProduct->getMasterZoomPictureUrl($iPicNr)}]">
                         <img class="details-picture-more-img" src="[{$oPictureProduct->getIconUrl($iPicNr)}]" alt="morepic-[{$smarty.foreach.sMorePics.iteration}]">
