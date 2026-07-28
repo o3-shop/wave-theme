@@ -64,12 +64,15 @@
 
                 [{if $oView->showZoomPics()}]
                     [{* ToDo: This logical part should be ported into a core function. *}]
+                    [{* Guard getimagesize() against an empty/unresolved path (PHP 8 ValueError). *}]
                     [{if $oConfig->getConfigParam('sAltImageUrl') || $oConfig->getConfigParam('sSSLAltImageUrl')}]
-                        [{assign var="aPictureInfo" value=$oPictureProduct->getMasterZoomPictureUrl(1)|@getimagesize}]
+                        [{assign var="sPicturePath" value=$oPictureProduct->getMasterZoomPictureUrl(1)}]
                     [{else}]
                         [{assign var="sPictureName" value=$oPictureProduct->oxarticles__oxpic1->value}]
-                        [{assign var="aPictureInfo" value=$oConfig->getMasterPicturePath("product/1/`$sPictureName`")|@getimagesize}]
+                        [{assign var="sPicturePath" value=$oConfig->getMasterPicturePath("product/1/`$sPictureName`")}]
                     [{/if}]
+                    [{assign var="aPictureInfo" value=""}]
+                    [{if $sPicturePath}][{assign var="aPictureInfo" value=$sPicturePath|@getimagesize}][{/if}]
 
                     <div class="picture details-picture">
                         <a class="details-picture-link" href="[{$oPictureProduct->getMasterZoomPictureUrl(1)}]" id="zoom1"[{if $aPictureInfo}] data-width="[{$aPictureInfo.0}]" data-height="[{$aPictureInfo.1}]"[{/if}]>

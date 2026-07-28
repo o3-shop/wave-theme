@@ -1,3 +1,10 @@
+[{* #219 order-review: show the guarantee label as a compact badge under the product info,
+   left-aligned, instead of the oversized full-width banner. Scoped to the order list. *}]
+<style>
+.orderBasketItems .o3-guarantee--order{margin:.35rem 0 0;}
+.orderBasketItems .o3-guarantee--order .o3-guarantee__summary{max-width:none;padding:0;line-height:0;}
+.orderBasketItems .o3-guarantee__banner{max-height:1.05rem;width:auto;display:block;}
+</style>
 <ul id="basket_list" class="cart_item-list list-unstyled[{if $oViewConf->getActiveClassName() == 'order'}] orderBasketItems[{/if}]">
     [{* basket items *}]
     [{assign var="basketitemlist" value=$oView->getBasketArticles()}]
@@ -127,6 +134,14 @@
                                         </div>
                                     [{/if}]
                                 [{/block}]
+
+                                [{* EU durability-guarantee label under the product info, left-aligned (#219): each *}]
+                                [{* eligible product carries its own label — a basket may mix different durations. *}]
+                                [{if !$editable}]
+                                    [{assign var="oGuaranteeArticle" value=$oArticle}]
+                                    [{assign var="sGuaranteeContext" value="o3-guarantee--order"}]
+                                    [{include file="page/details/inc/guaranteelabel.tpl"}]
+                                [{/if}]
 
                                 [{block name="checkout_basketcontents_basketitem_unitprice"}]
                                     [{* product price *}]

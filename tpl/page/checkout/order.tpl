@@ -237,6 +237,10 @@
                                         [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
                                     </div>
                                 [{/block}]
+
+                                [{* EU durability-guarantee labels (Sect. 312j Abs. 2 BGB, #219) now render *}]
+                                [{* per line item inside basketcontents_list.tpl, so a multi-product basket *}]
+                                [{* with different durations shows each product's own label. *}]
                             </div>
                         </div>
                     </form>
