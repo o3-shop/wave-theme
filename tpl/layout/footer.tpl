@@ -80,6 +80,17 @@
                 </div>
             </div>
 
+            [{block name="o3_footer_guarantee_notice"}]
+                [{if method_exists($oViewConf, 'getGuaranteeNoticeUrl') && $oViewConf->getGuaranteeNoticeUrl()}]
+                    [{* EU legal-guarantee notice (#219): own full-width strip below the link columns. *}]
+                    [{* The artwork must be visible without any interaction - no click-to-reveal. *}]
+                    <section class="footer__guarantee-rights o3-guarantee-rights">
+                        <div class="h4 footer-box-title o3-guarantee-rights__title">[{oxmultilang ident="O3_GUARANTEE_RIGHTS_LINK"}]</div>
+                        [{include file="layout/inc/guaranteenotice.tpl"}]
+                    </section>
+                [{/if}]
+            [{/block}]
+
             [{* <<START>> Social Links *}]
             [{block name="dd_footer_social_links"}]
                 [{if $oViewConf->getViewThemeParam('sFacebookUrl') || $oViewConf->getViewThemeParam('sGooglePlusUrl') || $oViewConf->getViewThemeParam('sTwitterUrl') || $oViewConf->getViewThemeParam('sYouTubeUrl') || $oViewConf->getViewThemeParam('sBlogUrl')}]

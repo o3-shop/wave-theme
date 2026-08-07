@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - EU guarantee labels (o3-shop/o3-shop#219) parity with o3-theme: durability-guarantee label on the product
   detail page and in the order-confirmation email (HTML + plain), and the legal-guarantee
-  notice always visible in the footer services widget
+  notice always visible as its own full-width strip in the footer
 - `tpl/page/details/inc/guaranteelabel.tpl` — the include referenced by the order review
   since v1.3.0 but missing until now
 
