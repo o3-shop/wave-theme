@@ -94,36 +94,14 @@
     }
 }
 
-// Footer "Ihre gesetzlichen Gewaehrleistungsrechte" text link revealing the notice.
+// Footer heading above the always-visible legal-guarantee notice.
 .o3-guarantee-rights {
-    &__link {
-        display: inline-block;
-        cursor: pointer;
-        list-style: none;
-        color: inherit;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-
-        &::-webkit-details-marker {
-            display: none;
-        }
-
-        &::marker {
-            content: "";
-        }
-
-        &:focus-visible {
-            outline: 2px solid #003399;
-            outline-offset: 3px;
-        }
-    }
-
-    &__panel {
-        margin-top: 1rem;
+    &__title {
+        margin-bottom: .6rem;
     }
 }
 
-// EU legal-guarantee notice artwork revealed inside the footer reveal panel.
+// EU legal-guarantee notice artwork, always rendered in the footer.
 .o3-guarantee-notice {
     // Hug the artwork instead of stretching the bordered box full width (#219 review).
     width: fit-content;
