@@ -1,5 +1,5 @@
 [{* EU legal-guarantee notice (Reg. (EU) 2025/1960 Annex I) - shop-global fixed artwork, issue #219. *}]
-[{* Rendered inside the footer "rights" reveal panel (see tpl/widget/footer/services.tpl). *}]
+[{* Always rendered in the footer, never behind a click (see tpl/widget/footer/services.tpl). *}]
 [{* The CMS snippet below is strictly supplementary and must never gate the image. *}]
 [{if method_exists($oViewConf, 'getGuaranteeNoticeUrl')}]
     [{assign var="sGuaranteeNoticeUrl" value=$oViewConf->getGuaranteeNoticeUrl()}]
