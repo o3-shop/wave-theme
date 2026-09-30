@@ -259,6 +259,13 @@
 
 [{block name="email_plain_order_cust_orderemailend"}]
 [{oxcontent ident="oxuserorderemailendplain"}]
+[{if method_exists($oViewConf, 'getGuaranteeNoticeUrl') && $oViewConf->getGuaranteeNoticeUrl()}]
+
+[{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_ALT"}]
+[{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
+[{$oGuaranteeCont->oxcontents__oxcontent->value|strip_tags}]
+[{/oxifcontent}]
+[{/if}]
 [{/block}]
 
 [{oxcontent ident="oxemailfooterplain"}]
